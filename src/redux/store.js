@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 // Or from '@reduxjs/toolkit/query/react'
 // import { setupListeners } from '@reduxjs/toolkit/query';
-import { useGetContactsQuery } from './phoneApi';
+import { contactsApi } from './phoneApi';
 import { phoneBookSlice } from 'redux/phoneBookSlice';
 
 // export const store = configureStore({
@@ -15,7 +15,7 @@ import { phoneBookSlice } from 'redux/phoneBookSlice';
 
 export const store = configureStore({
   reducer: {
-    [useGetContactsQuery.reducerPath]: useGetContactsQuery.reducer,
+    [contactsApi.reducerPath]: contactsApi.reducer,
     phonebook: phoneBookSlice.reducer,
   },
 

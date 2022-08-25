@@ -22,7 +22,7 @@ export const contactsApi = createApi({
     // }),
     //
     //
-    // addContacts: build.mutation({
+    // removeContacts: build.mutation({
     //   query: body => ({
     //     url: `posts`,
     //     method: 'DELETE',
