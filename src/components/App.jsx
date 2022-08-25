@@ -4,9 +4,6 @@ import Filter from './Filter';
 import { useGetContactsQuery } from 'redux/phoneApi';
 
 export const App = () => {
-  const { data, error, isLoading } = useGetContactsQuery();
-  console.log(data);
-
   return (
     <>
       <div>

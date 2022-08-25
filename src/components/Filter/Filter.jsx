@@ -1,10 +1,19 @@
-import React from 'react';
+// import React from 'react';
 
-import { useDispatch } from 'react-redux';
-import { findContact } from 'redux/phoneBookSlice';
+import { useFindContactsQuery } from 'redux/phoneApi';
+import { useState } from 'react';
 
 const Filter = () => {
-  const dispatch = useDispatch();
+  const [filter, setFilter] = useState('');
+  const { data, error, isLoading } = useFindContactsQuery(filter);
+  console.log(data);
+
+  const onHandleChange = e => {
+    // if (isLoading) return;
+    // else setFilter(e.target.value);
+
+    setFilter(e.target.value);
+  };
 
   return (
     <>
@@ -14,7 +23,7 @@ const Filter = () => {
         <input
           type="text"
           // value={value}
-          onChange={e => dispatch(findContact(e.target.value))}
+          onChange={onHandleChange}
         />
       </label>
     </>

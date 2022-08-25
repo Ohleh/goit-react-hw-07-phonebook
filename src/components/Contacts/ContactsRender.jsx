@@ -1,13 +1,16 @@
-import { useDispatch } from 'react-redux';
-import { removeContact } from 'redux/phoneBookSlice';
+import { useRemoveContactsMutation } from 'redux/phoneApi';
 
 const ContactsRender = ({ contact: [id, name, number] }) => {
-  const dispatch = useDispatch();
+  const [removeContacts, { isLoading }] = useRemoveContactsMutation();
 
   return (
     <li key={id}>
       {name}: {number}
-      <button type="button" onClick={() => dispatch(removeContact(id))}>
+      <button
+        type="button"
+        onClick={() => removeContacts(id)}
+        disabled={isLoading}
+      >
         dell
       </button>
     </li>

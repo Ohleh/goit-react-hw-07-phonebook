@@ -3,27 +3,34 @@ import ContactsRender from './ContactsRender';
 import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useGetContactsQuery } from 'redux/phoneApi';
+import { useFindContactsQuery } from 'redux/phoneApi';
 
 const Contacts = () => {
   const { data, error, isLoading } = useGetContactsQuery();
-  console.log(data);
+  // const { data: value } = useFindContactsQuery();
+  // console.log(value);
 
-  const filter = useSelector(state => state.phonebook.contacts.filter);
-  const contacts = useSelector(state => state.phonebook.contacts.items);
+  // const filter = useSelector(state => state.phonebook.contacts.filter);
+  // const contacts = useSelector(state => state.phonebook.contacts.items);
 
-  const filteredContacts = filter
-    ? contacts.filter(({ name }) =>
-        name.toLowerCase().includes(filter.toLowerCase())
-      )
-    : contacts;
+  // const filteredContacts = filter
+  //   ? contacts.filter(({ name }) =>
+  //       name.toLowerCase().includes(filter.toLowerCase())
+  //     )
+  //   : data;
 
   return (
     <div>
-      <ul>
-        {filteredContacts.map(({ id, name, number }) => (
-          <ContactsRender key={id} contact={[id, name, number]} />
-        ))}
-      </ul>
+      {error && <p>Трясця, кіна не буде</p>}
+      {isLoading ? (
+        <p>Качаю кілобайти</p>
+      ) : (
+        <ul>
+          {data.map(({ id, name, phone }) => (
+            <ContactsRender key={id} contact={[id, name, phone]} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

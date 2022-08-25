@@ -1,24 +1,22 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { addContact } from 'redux/phoneBookSlice';
 
 import { nanoid } from 'nanoid';
+import { useGetContactsQuery } from 'redux/phoneApi';
+import { useAddContactsMutation } from 'redux/phoneApi';
 
 const Form = () => {
-  const dispatch = useDispatch();
-
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-  const contacts = useSelector(state => state.phonebook.contacts.items);
+  const [phone, setPhone] = useState('');
+  const { data, error, isLoading } = useGetContactsQuery();
+  const [addContacts] = useAddContactsMutation();
 
   const handleChange = ev => {
     switch (ev.target.name) {
       case 'name':
         setName(ev.target.value);
         break;
-      case 'number':
-        setNumber(ev.target.value);
+      case 'phone':
+        setPhone(ev.target.value);
         break;
       default:
         return;
@@ -28,17 +26,14 @@ const Form = () => {
   const formSubmit = ev => {
     ev.preventDefault();
     if (
-      contacts.find(
-        contact => contact.name.toLowerCase() === name.toLowerCase()
-      )
+      data.find(contact => contact.name.toLowerCase() === name.toLowerCase())
     ) {
       return alert(`${name} - is already exists`);
     }
-
-    dispatch(addContact({ name, number, id: nanoid() }));
+    addContacts(ev);
 
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -59,11 +54,11 @@ const Form = () => {
         <p>Number</p>
         <input
           type="tel"
-          name="number"
+          name="phone"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          value={number}
+          value={phone}
           onChange={handleChange}
         />
       </label>
