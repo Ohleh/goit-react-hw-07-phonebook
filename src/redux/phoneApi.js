@@ -21,6 +21,16 @@ export const contactsApi = createApi({
     //   invalidatesTags: ['Posts'],
     // }),
     //
+    //
+    // addContacts: build.mutation({
+    //   query: body => ({
+    //     url: `posts`,
+    //     method: 'DELETE',
+    //     body,
+    //   }),
+    //   invalidatesTags: ['Posts'],
+    // }),
+    //
   }),
 });
 

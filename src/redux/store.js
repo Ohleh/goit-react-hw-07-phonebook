@@ -15,10 +15,10 @@ import { phoneBookSlice } from 'redux/phoneBookSlice';
 
 export const store = configureStore({
   reducer: {
-    phonebook: phoneBookSlice.reducer,
     [useGetContactsQuery.reducerPath]: useGetContactsQuery.reducer,
+    phonebook: phoneBookSlice.reducer,
   },
 
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(useGetContactsQuery.middleware),
+  // middleware: getDefaultMiddleware =>
+  //   getDefaultMiddleware().concat(useGetContactsQuery.middleware),
 });
