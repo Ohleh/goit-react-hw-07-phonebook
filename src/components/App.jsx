@@ -1,8 +1,12 @@
 import Contacts from './Contacts';
 import Form from './Form';
 import Filter from './Filter';
+import { useGetContactsQuery } from 'redux/phoneApi';
 
 export const App = () => {
+  const { data, error, isLoading } = useGetContactsQuery();
+  console.log(data);
+
   return (
     <>
       <div>
