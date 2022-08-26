@@ -1,5 +1,5 @@
 // import React from 'react';
-
+import Contacts from '../Contacts/Contacts';
 import { useFindContactsQuery } from 'redux/phoneApi';
 import { useState } from 'react';
 import { useGetContactsQuery } from 'redux/phoneApi';
@@ -23,12 +23,6 @@ const Filter = () => {
 
   console.log(filteredContacts);
 
-  const onHandleChange = e => {
-    // if (isLoading) return;
-    // else setFilter(e.target.value);
-    setFilter(e.target.value);
-  };
-
   return (
     <>
       <label>
@@ -37,15 +31,12 @@ const Filter = () => {
         <input
           type="text"
           // value={value}
-          onChange={onHandleChange}
+          onChange={e => setFilter(e.target.value)}
         />
       </label>
+      <Contacts filteredContacts={filteredContacts} />
     </>
   );
 };
-
-// Filter.propTypes = {
-//   value: propTypes.string.isRequired,
-// };
 
 export default Filter;

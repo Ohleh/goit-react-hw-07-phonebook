@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useGetContactsQuery } from 'redux/phoneApi';
 import { useFindContactsQuery } from 'redux/phoneApi';
 
-const Contacts = () => {
+const Contacts = ({ filteredContacts }) => {
   const { data, error, isLoading } = useGetContactsQuery();
   // const { data: value } = useFindContactsQuery();
   console.log(data);
@@ -23,7 +23,7 @@ const Contacts = () => {
         <p>Качаю кілобайти</p>
       ) : (
         <ul>
-          {data.map(({ id, name, phone }) => (
+          {filteredContacts.map(({ id, name, phone }) => (
             <ContactsRender key={id} contact={[id, name, phone]} />
           ))}
         </ul>
