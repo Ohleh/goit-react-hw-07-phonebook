@@ -2,16 +2,30 @@
 
 import { useFindContactsQuery } from 'redux/phoneApi';
 import { useState } from 'react';
+import { useGetContactsQuery } from 'redux/phoneApi';
 
 const Filter = () => {
   const [filter, setFilter] = useState('');
-  const { data, error, isLoading } = useFindContactsQuery(filter);
-  console.log(data);
+
+  const {
+    data: value,
+    error: errorGet,
+    isLoading: isLoadingGet,
+  } = useGetContactsQuery();
+
+  // const { data, error, isLoading } = useFindContactsQuery();
+
+  const filteredContacts = filter
+    ? value.filter(({ name }) =>
+        name.toLowerCase().includes(filter.toLowerCase())
+      )
+    : value;
+
+  console.log(filteredContacts);
 
   const onHandleChange = e => {
     // if (isLoading) return;
     // else setFilter(e.target.value);
-
     setFilter(e.target.value);
   };
 
