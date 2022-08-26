@@ -8,7 +8,7 @@ import { useFindContactsQuery } from 'redux/phoneApi';
 const Contacts = ({ filteredContacts }) => {
   const { data, error, isLoading } = useGetContactsQuery();
   // const { data: value } = useFindContactsQuery();
-  console.log(data);
+  // console.log(data);
 
   // const filteredContacts = filter
   //   ? contacts.filter(({ name }) =>

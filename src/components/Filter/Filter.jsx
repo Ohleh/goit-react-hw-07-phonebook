@@ -21,7 +21,7 @@ const Filter = () => {
       )
     : value;
 
-  console.log(filteredContacts);
+  // console.log(filteredContacts);
 
   return (
     <>
