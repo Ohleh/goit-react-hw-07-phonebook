@@ -7,7 +7,10 @@ import { useAddContactsMutation } from 'redux/phoneApi';
 const Form = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const { data, error, isLoading } = useGetContactsQuery();
+  const {
+    data,
+    // error, isLoading
+  } = useGetContactsQuery();
   const [addContacts] = useAddContactsMutation();
 
   const handleChange = ev => {

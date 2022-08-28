@@ -1,6 +1,6 @@
 // import React from 'react';
 import Contacts from '../Contacts/Contacts';
-import { useFindContactsQuery } from 'redux/phoneApi';
+// import { useFindContactsQuery } from 'redux/phoneApi';
 import { useState } from 'react';
 import { useGetContactsQuery } from 'redux/phoneApi';
 
@@ -9,8 +9,8 @@ const Filter = () => {
 
   const {
     data: value,
-    error: errorGet,
-    isLoading: isLoadingGet,
+    // error: errorGet,
+    // isLoading: isLoadingGet,
   } = useGetContactsQuery();
 
   // const { data, error, isLoading } = useFindContactsQuery();

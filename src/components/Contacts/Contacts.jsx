@@ -1,12 +1,12 @@
 import React from 'react';
 import ContactsRender from './ContactsRender';
 import propTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { useGetContactsQuery } from 'redux/phoneApi';
-import { useFindContactsQuery } from 'redux/phoneApi';
+// import { useFindContactsQuery } from 'redux/phoneApi';
 
 const Contacts = ({ filteredContacts }) => {
-  const { data, error, isLoading } = useGetContactsQuery();
+  const { error, isLoading } = useGetContactsQuery();
   // const { data: value } = useFindContactsQuery();
   // console.log(data);
 
